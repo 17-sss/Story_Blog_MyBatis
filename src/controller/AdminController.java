@@ -9,7 +9,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.db.UserDBBean;
 import com.db.UserDBMyBatis;
 import com.db.UserDataBean;
 import com.oreilly.servlet.MultipartRequest;
@@ -174,7 +173,7 @@ public class AdminController extends Action {
 		user.setTel(req.getParameter("tel"));
 		user.setBirth(req.getParameter("birth"));
 
-		UserDBBean dbPro = UserDBBean.getInstance();
+		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
 
 		int check = dbPro.deleteUser(email, pwd);
 

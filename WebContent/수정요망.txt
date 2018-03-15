@@ -1,0 +1,4 @@
+﻿StoryController.java
+	* MyBatis 현재 수정 불가..
+	- confirmEmail
+	- loginCheck

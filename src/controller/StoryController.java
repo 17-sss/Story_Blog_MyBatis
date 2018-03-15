@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.db.DiaryDBBean;
 import com.db.DiaryDataBean;
 import com.db.UserDBBean;
+import com.db.UserDBMyBatis;
 import com.db.UserDataBean;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -37,7 +38,7 @@ public class StoryController extends Action {
 	
 	// 유저 - 회원가입 전송
 	public String accountPro(HttpServletRequest req, HttpServletResponse res)  throws Throwable { 
-		UserDBBean dbPro = UserDBBean.getInstance();
+		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
 		UserDataBean user = new UserDataBean();
 		
 		// 사진 업로드용 ============================================
@@ -89,10 +90,10 @@ public class StoryController extends Action {
 		return null; 
 	} 
 	
-	// 유저 - 이메일 확인
+	// 유저 - 이메일 확인 <<<<<MyBatis 미완>>>>>
 	public String confirmEmail (HttpServletRequest req,HttpServletResponse res)  throws Throwable { 
 		String email = req.getParameter("email"); 
-		UserDBBean dbPro = UserDBBean.getInstance();
+		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
 		boolean result = dbPro.confirmEmail(email);
 		req.setAttribute("result", result);
 		req.setAttribute("email", email);
@@ -100,7 +101,7 @@ public class StoryController extends Action {
 		return  "/Project/confirmEmail.jsp"; 
 	}
 	
-	// 유저 - 로그인
+	// 유저 - 로그인 <<<<<MyBatis 미완>>>>>
 	public String LoginPro(HttpServletRequest req, HttpServletResponse res)  throws Throwable { 
 		 // 로그인 화면에 입력된 아이디와 비밀번호를 가져온다
 		HttpSession  session = req.getSession();
@@ -110,7 +111,7 @@ public class StoryController extends Action {
         System.out.println("LoginPro=============");
      	
         // DB에서 아이디, 비밀번호 확인
-        UserDBBean dbPro = UserDBBean.getInstance();
+        UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
         int check = dbPro.loginCheck(email, pwd);
         
         UserDataBean user = new UserDataBean();
