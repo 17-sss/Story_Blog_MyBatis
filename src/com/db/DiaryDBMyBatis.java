@@ -1,5 +1,5 @@
 package com.db;
 
-public class DiaryDBMyBatis {
+public class DiaryDBMyBatis extends MybatisConnector {
 
 }

@@ -1,16 +1,12 @@
 package com.db;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-public class UserDBMyBatis extends UserConnector {
+public class UserDBMyBatis extends MybatisConnector {
 	private final String namespace = "user.mybatis";
 	private static UserDBMyBatis instance = new UserDBMyBatis();
 	private UserDBMyBatis() {}
@@ -104,32 +100,23 @@ public class UserDBMyBatis extends UserConnector {
 	
 	// 이메일 중복확인 <<<<<MyBatis 미완>>>>>
 	public boolean confirmEmail(String email) {
-		boolean result = false;
 		sqlSession = sqlSession();
 		Map map = new HashMap();
+		Map map2 = new HashMap();
 		map.put("email", email);
-		result = sqlSession.selectOne(namespace + ".confirmEmail", map);
-		sqlSession.commit();
+		boolean chk=true;
+		
+		map2=sqlSession.selectOne(namespace+".confirmEmail",map);
+		
+		if (map2!=null) {
+			chk=true;
+		}else {
+			chk=false;
+		}
 		sqlSession.close();
 		
-		return result;
-    }
-	
-	// 로그인 확인 <<<<<MyBatis 미완>>>>>
-	public int loginCheck(String email, String pwd) {
-		int x=-1;
-		sqlSession= sqlSession();
-		Map map = new HashMap();
-		map.put("email", email);
-		map.put("pwd", pwd);
-		x = sqlSession.selectOne(namespace+".loginCheck", map);
-		sqlSession.commit();
-		sqlSession.close();
-		
-		return x;
-	} 
-	
-	  //select pwd from userlist where email=#{email}
+		return chk;
+	}
 	 
 	           
 }

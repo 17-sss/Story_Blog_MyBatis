@@ -28,7 +28,7 @@
 		insert into userlist(email, name, pwd, tel, birth, cdate, ip, filename, filesize) values(#{email},#{name},#{pwd},#{tel},#{birth}, sysdate, #{ip},#{filename},#{filesize})
 	</insert>
 	
-	<select id="confirmEmail" parameterType="hashmap" resultType="Boolean">
+	<select id="confirmEmail" parameterType="hashmap" resultType="User">
 		select email from userlist where email=#{email}
 	</select>
 	

@@ -101,7 +101,7 @@ public class StoryController extends Action {
 		return  "/Project/confirmEmail.jsp"; 
 	}
 	
-	// 유저 - 로그인 <<<<<MyBatis 미완>>>>>
+	// 유저 - 로그인
 	public String LoginPro(HttpServletRequest req, HttpServletResponse res)  throws Throwable { 
 		 // 로그인 화면에 입력된 아이디와 비밀번호를 가져온다
 		HttpSession  session = req.getSession();
@@ -111,7 +111,7 @@ public class StoryController extends Action {
         System.out.println("LoginPro=============");
      	
         // DB에서 아이디, 비밀번호 확인
-        UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
+        UserDBBean dbPro = UserDBBean.getInstance();
         int check = dbPro.loginCheck(email, pwd);
         
         UserDataBean user = new UserDataBean();

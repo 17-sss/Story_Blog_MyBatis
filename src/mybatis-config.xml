@@ -4,8 +4,10 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type = "com.db.DiaryDataBean" alias="Diary" />
 		<typeAlias type = "com.db.UserDataBean" alias="User" />
 	</typeAliases>
+	
 	<environments default = "development">
 		<environment id ="development">
 			<transactionManager type="JDBC" />
@@ -17,5 +19,10 @@
 			</dataSource> 
 		</environment>
 	</environments>
-	<mappers><mapper resource="userlist.xml" /></mappers>
+	
+	<mappers>
+		<mapper resource="diary.xml" />
+		<mapper resource="userlist.xml" />
+	</mappers>
+	
 </configuration>

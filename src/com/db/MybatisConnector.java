@@ -7,9 +7,9 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class DiaryConnector {
+public class MybatisConnector {
 	public SqlSession sqlSession() {
-		String resource = "userlist-config.xml";
+		String resource = "mybatis-config.xml";
 		InputStream inputStream;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
