@@ -1,5 +1,8 @@
 package com.db;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,7 +101,7 @@ public class UserDBMyBatis extends MybatisConnector {
 		sqlSession.close();
 	}
 	
-	// 이메일 중복확인 <<<<<MyBatis 미완>>>>>
+	// 이메일 중복확인 
 	public boolean confirmEmail(String email) {
 		sqlSession = sqlSession();
 		Map map = new HashMap();
@@ -117,6 +120,58 @@ public class UserDBMyBatis extends MybatisConnector {
 		
 		return chk;
 	}
+	
+	// 로그인 체크 
+	 public int loginCheck(String email, String pwd) {
+		sqlSession= sqlSession();
+		Map map = new HashMap();
+		map.put("email", email);
+		map.put("pwd", pwd);
+		int x = sqlSession.selectOne(namespace+".loginCheck", map);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return x;
+	}
+	 /*public int loginCheck(String email, String pwd) 
+	    {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
 	 
-	           
+	        String dbPW = ""; // db에서 꺼낸 비밀번호를 담을 변수
+	        int x = -1;
+	 
+	        try {
+	            // 쿼리 - 먼저 입력된 아이디로 DB에서 비밀번호를 조회한다.
+	            StringBuffer query = new StringBuffer();
+	            query.append("select pwd from userlist where email=?");
+	 
+	            conn = getConnection();
+	            pstmt = conn.prepareStatement(query.toString());
+	            pstmt.setString(1, email);
+	            rs = pstmt.executeQuery();
+	 
+	            if (rs.next()) // 입력된 아이디에 해당하는 비번 있을경우
+	            {
+	                dbPW = rs.getString("pwd"); // 비번을 변수에 넣는다.
+	 
+	                if (dbPW.equals(pwd)) 
+	                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
+	                else                  
+	                    x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
+	                
+	            } else {
+	                x = -1; // 해당 아이디가 없을 경우
+	            }
+	 
+	            return x;
+	 
+	        } catch (Exception e) {
+	            throw new RuntimeException(e.getMessage());
+	        } finally {
+	        	 close(conn, null, pstmt);
+	        }
+	    } // end loginCheck()
+*/	           
 }

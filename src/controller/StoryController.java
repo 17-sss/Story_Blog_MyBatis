@@ -90,7 +90,7 @@ public class StoryController extends Action {
 		return null; 
 	} 
 	
-	// 유저 - 이메일 확인 <<<<<MyBatis 미완>>>>>
+	// 유저 - 이메일 확인
 	public String confirmEmail (HttpServletRequest req,HttpServletResponse res)  throws Throwable { 
 		String email = req.getParameter("email"); 
 		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
@@ -111,7 +111,7 @@ public class StoryController extends Action {
         System.out.println("LoginPro=============");
      	
         // DB에서 아이디, 비밀번호 확인
-        UserDBBean dbPro = UserDBBean.getInstance();
+        UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
         int check = dbPro.loginCheck(email, pwd);
         
         UserDataBean user = new UserDataBean();
