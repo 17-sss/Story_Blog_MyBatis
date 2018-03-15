@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 180312 오전  -->
-<mapper namespace="ldg.mybatis">
-	<select id="boardList" resultType="Board" parameterType="hashmap">
-		select * from board
-		<if test="num !=null">
-			WHERE num = #{num}
-		</if>
-		<if test="boardid !=null">
-			WHERE boardid = #{boardid}
-		</if>
-	</select>
-	
+<mapper namespace="diary.mybatis">
 	
 	<select id="getArticleCount" resultType="int" parameterType="hashmap">
 		select nvl(count(*), 0) from board
@@ -26,7 +15,6 @@
 	content, ip from board where boardid = #{boardid} order by ref desc, re_step) a) where rnum between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- 180312 오후  -->
 	<select id="getNextNumber" resultType="int">
 		select boardser.nextval from dual
 	</select>
@@ -41,7 +29,6 @@
 	</insert>
 	
 
-	<!-- 180313 오전  -->
 	<update id="addReadCount" parameterType="hashmap">
 		update board set readcount=readcount+1 where num = #{num} and boardid = #{boardid}
 	</update>
@@ -50,7 +37,6 @@
 		select * from board where num = #{num} and boardid = #{boardid}
 	</select>
 	
-	<!-- update insert delete은 resultType쓰면 안됨, 어차피 에러남.-->
 	<update id="updateArticle" parameterType="Board">
 		update board set writer=#{writer}, email=#{email}, subject=#{subject}, content=#{content} where num=#{num} and passwd = #{passwd}
 	</update>

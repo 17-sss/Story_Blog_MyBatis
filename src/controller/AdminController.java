@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.db.UserDBBean;
+import com.db.UserDBMyBatis;
 import com.db.UserDataBean;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -32,7 +33,7 @@ public class AdminController extends Action {
 		int count = 0;
 		int number = 0;
 		List usList = null;
-		UserDBBean dbPro = UserDBBean.getInstance();
+		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
 		count = dbPro.getUserCount();
 		// 게시판에 있는 글 수 count
 		if (count > 0) {
@@ -71,7 +72,7 @@ public class AdminController extends Action {
 			pageNum = "1";
 		}
 		try {
-			UserDBBean userPro = UserDBBean.getInstance();
+			UserDBMyBatis userPro = UserDBMyBatis.getInstance();
 			UserDataBean user = userPro.getUser(email, pwd);
 
 			req.setAttribute("user", user);
@@ -85,7 +86,7 @@ public class AdminController extends Action {
 	// /story/admin/updateUserPro
 	public String updateUserPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		UserDataBean user = new UserDataBean();
-		UserDBBean userPro = UserDBBean.getInstance();
+		UserDBMyBatis userPro = UserDBMyBatis.getInstance();
 
 		// 사진 업로드용 ============================================
 		String realFolder = ""; // 웹 어플리케이션상의 절대경로

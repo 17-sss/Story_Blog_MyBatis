@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type = "board.BoardDataBean" alias="Board" />
+		<typeAlias type = "com.db.UserDataBean" alias="User" />
 	</typeAliases>
 	<environments default = "development">
 		<environment id ="development">
@@ -17,5 +17,5 @@
 			</dataSource> 
 		</environment>
 	</environments>
-	<mappers><mapper resource="Board.xml" /></mappers>
+	<mappers><mapper resource="userlist.xml" /></mappers>
 </configuration>
