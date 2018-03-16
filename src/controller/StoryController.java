@@ -562,14 +562,8 @@ public class StoryController extends Action {
 			diary.setFilename4(filename[0]);
 			diary.setFilesize4((int) file[0].length()); 
 			
-		} else {
-			diary.setFilename4("no");
-			diary.setFilesize4(0);
-		}
+		} 
 			
-		
-	
-		
 		// =================================================
 		
 		System.out.println(diary);
@@ -595,7 +589,7 @@ public class StoryController extends Action {
 			pageNum = "1";
 		}
 		try {
-			DiaryDBBean dbPro = DiaryDBBean.getInstance();
+			DiaryDBMyBatis dbPro = DiaryDBMyBatis.getInstance();
 			DiaryDataBean diary = dbPro.getDiary(num, (String)session.getAttribute("sessionID"), diaryid);
 			
 			req.setAttribute("diary", diary);
@@ -609,23 +603,10 @@ public class StoryController extends Action {
 	
 	// 유저 - 마이페이지 
 	public String user_set(HttpServletRequest req, HttpServletResponse res)  throws Throwable { 
-		/*HttpSession session = req.getSession();
-		
-		try {
-			UserDBBean userPro = UserDBBean.getInstance();
-			UserDataBean user = userPro.getUser((String)session.getAttribute("sessionID"));
-			
-			System.out.println("마이페이지 정보: " + user);
-			req.setAttribute("user", user); 
-			
-		} catch (Exception e) {}
-		
-		return  "/Project/view/user_set.jsp"; 
-	}*/	
 		HttpSession session = req.getSession();
 		
 		try {
-			UserDBBean userPro = UserDBBean.getInstance();
+			UserDBMyBatis userPro = UserDBMyBatis.getInstance();
 			UserDataBean user = userPro.getUser((String)session.getAttribute("sessionID"));
 			
 			req.setAttribute("user", user); 
@@ -636,7 +617,7 @@ public class StoryController extends Action {
 	
 	public String user_updateUPro(HttpServletRequest req, HttpServletResponse res)  throws Throwable {
 		UserDataBean user = new UserDataBean();
-		UserDBBean dbPro = UserDBBean.getInstance();
+		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
 		
 		// 6) fileSave 폴더 webcontent폴더 안에 만들기
 		String realFolder = ""; //웹 어플리케이션상의 절대경로
@@ -706,7 +687,7 @@ public class StoryController extends Action {
 		user.setTel(req.getParameter("tel"));
 		user.setBirth(req.getParameter("birth"));
 		
-		UserDBBean dbPro = UserDBBean.getInstance();
+		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
 		
 		int check = dbPro.deleteUser(email, pwd);
 		
@@ -724,7 +705,7 @@ public class StoryController extends Action {
 	// header.jspf - /story/head
 	public String head(HttpServletRequest req, HttpServletResponse res)  throws Throwable {
 		HttpSession session = req.getSession(); 
-		UserDBBean dbPro = UserDBBean.getInstance();
+		UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
         UserDataBean user = new UserDataBean();
      
 		// 로그인이 안되었을 때
