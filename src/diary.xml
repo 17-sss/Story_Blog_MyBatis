@@ -17,8 +17,26 @@
 			FROM diary WHERE diaryid = #{diaryid} and email=#{email}
 	</select>
 	
+	<select id="getDiary" parameterType="hashmap" resultType="Diary">
+		select * from diary where num = #{num} and email = #{email} and diaryid = #{diaryid}
+	</select>
 	
-		
+	<update id="updateDiary" parameterType="Diary">
+		update diary set diaryid = #{diaryid}, subject = #{subject}, content = #{content}, filename0 = #{filename0}, filename1 = #{filename1}, filename2 = #{filename2},
+		filename3 = #{filename3}, filename4 = #{filename4} where num = #{num} and email = #{email}
+	</update>
+	
+	<delete id="deleteDiary" parameterType="hashmap">
+		delete from diary where num = #{num} and email = #{email} and diaryid = #{diaryid}
+	</delete>
+	
+	<select id="getNextNumber" resultType="int">
+		select diaryser.nextval from dual
+	</select>
+	
+	<insert id="insertDiary" parameterType="Diary">
+		insert into diary(num, email, diaryid, subject, cdate, content, ip, filename0, filesize0, filename1, filesize1, filename2, filesize2, filename3, filesize3, filename4, filesize4) values(#{num},#{email},#{diaryid},#{subject},sysdate,#{content},#{ip},#{filename0},#{filesize0},#{filename1},#{filesize1},#{filename2},#{filesize2},#{filename3},#{filesize3},#{filename4},#{filesize4})
+	</insert>
 	
 	
 	<!-- <select id="getArticleCount" resultType="int" parameterType="hashmap">

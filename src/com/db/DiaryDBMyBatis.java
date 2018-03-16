@@ -1,5 +1,9 @@
 package com.db;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,5 +54,58 @@ public class DiaryDBMyBatis extends MybatisConnector {
 		x = sqlSession.selectOne(namespace+".getImgDiaryCountTotal", map);
 		sqlSession.close();
 		return x;
-	}	
+	}
+	
+	// 일기 수정 폼 (정보 가져오기)
+	public DiaryDataBean getDiary(int num, String email, String diaryid) {
+		sqlSession= sqlSession();
+		Map map = new HashMap();
+		map.put("num", num);
+		map.put("email", email);
+		map.put("diaryid", diaryid);
+		
+		DiaryDataBean diary=sqlSession.selectOne(namespace + ".getDiary" ,map);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return diary;
+	}
+	
+	// 일기 수정Pro 메소드 - 파일 업로드
+	public int updateDiary (DiaryDataBean diary) {
+		sqlSession= sqlSession();
+		int chk = sqlSession.update(namespace+".updateDiary", diary);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return chk;
+	}
+	
+	// 일기 삭제
+	public int deleteDiary (int num, String email, String diaryid) throws Exception {
+		sqlSession= sqlSession();
+		Map map = new HashMap();
+		map.put("num", num);
+		map.put("email", email);
+		map.put("diaryid", diaryid);
+		int chk = sqlSession.delete(namespace+".deleteDiary", map);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return chk;	
+	}
+	
+	// 일기 쓰기
+	public void insertDiary(DiaryDataBean diary) {
+		sqlSession= sqlSession();
+		int number = sqlSession.selectOne(namespace + ".getNextNumber",diary);
+		number=number+1;
+		
+		diary.setNum(number);
+	
+		sqlSession.insert(namespace + ".insertDiary", diary);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
 }

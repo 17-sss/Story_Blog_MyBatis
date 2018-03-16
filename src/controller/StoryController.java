@@ -293,7 +293,7 @@ public class StoryController extends Action {
 		int count = 0;
 		int number = 0;
 		List diaryList = null;
-		DiaryDBBean dbPro = DiaryDBBean.getInstance();
+		DiaryDBMyBatis dbPro = DiaryDBMyBatis.getInstance();
 		count = dbPro.getDiaryCount(diaryid, (String)session.getAttribute("sessionID"));
 		//게시판에 있는 글 수 count
 		if (count > 0) {
@@ -338,7 +338,7 @@ public class StoryController extends Action {
 		int num = Integer.parseInt(req.getParameter("num"));
 		
 		try {
-			DiaryDBBean diaryPro = DiaryDBBean.getInstance();
+			DiaryDBMyBatis diaryPro = DiaryDBMyBatis.getInstance();
 			DiaryDataBean diary = diaryPro.getDiary(num, (String)session.getAttribute("sessionID"), diaryid);
 			
 			req.setAttribute("pageNum", pageNum); 
@@ -350,7 +350,7 @@ public class StoryController extends Action {
 	// 일기 수정 전송 - 파일 업로드
 	public String user_updateDPro(HttpServletRequest req, HttpServletResponse res)  throws Throwable {
 		DiaryDataBean diary = new DiaryDataBean();
-		DiaryDBBean diaPro = DiaryDBBean.getInstance();
+		DiaryDBMyBatis diaPro = DiaryDBMyBatis.getInstance();
 		
 		// 6) fileSave 폴더 webcontent폴더 안에 만들기
 		String realFolder = ""; //웹 어플리케이션상의 절대경로
@@ -456,7 +456,7 @@ public class StoryController extends Action {
 		if (pageNum == null || pageNum == "") {pageNum = "1";}
 		int num = Integer.parseInt(req.getParameter("num"));
 		
-		DiaryDBBean dbPro = DiaryDBBean.getInstance();
+		DiaryDBMyBatis dbPro = DiaryDBMyBatis.getInstance();
 		
 		int check = dbPro.deleteDiary(num, (String)session.getAttribute("sessionID"), diaryid);
 		
@@ -488,7 +488,7 @@ public class StoryController extends Action {
 	public String user_writePro(HttpServletRequest req, HttpServletResponse res)  throws Throwable {
 		HttpSession session = req.getSession();
 		DiaryDataBean diary = new DiaryDataBean();
-		DiaryDBBean dbPro = DiaryDBBean.getInstance();
+		DiaryDBMyBatis dbPro = DiaryDBMyBatis.getInstance();
 		
 		// 6) fileSave 폴더 webcontent폴더 안에 만들기
 		String realFolder = ""; // 웹 어플리케이션상의 절대경로
@@ -562,7 +562,10 @@ public class StoryController extends Action {
 			diary.setFilename4(filename[0]);
 			diary.setFilesize4((int) file[0].length()); 
 			
-		} else {}
+		} else {
+			diary.setFilename4("no");
+			diary.setFilesize4(0);
+		}
 			
 		
 	
