@@ -32,6 +32,11 @@
 		select email from userlist where email=#{email}
 	</select>
 	
+	<!-- 보류 -->
+	<select id="loginCheck" parameterType="hashmap" resultType="User">
+		select pwd from userlist where email=#{email}
+	</select>
+	
 	<!-- <select id="getArticleCount" resultType="int" parameterType="hashmap">
 		select nvl(count(*), 0) from board
 		<if test="boardid !=null">

@@ -3,6 +3,24 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="diary.mybatis">
 	
+	<select id="getDiaryCount" resultType="int" parameterType="hashmap">
+		SELECT nvl(count(*),0) FROM diary WHERE diaryid = #{diaryid} and email = #{email}
+	</select>
+	
+	<select id="getDiaries" resultType="Diary" parameterType="hashmap">
+		select * from (select rownum rnum, b.* from (select num, email, diaryid, subject, cdate, content, ip, filename0, filename1, filename2,
+			filename3, filename4 from diary where diaryid = #{diaryid} and email = #{email} order by cdate desc) b) where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getImgDiaryCountTotal" resultType="int" parameterType="hashmap">
+		SELECT nvl(count(filename0),0) + nvl(count(filename1),0) + nvl(count(filename2),0) + nvl(count(filename3),0) + nvl(count(filename4),0)
+			FROM diary WHERE diaryid = #{diaryid} and email=#{email}
+	</select>
+	
+	
+		
+	
+	
 	<!-- <select id="getArticleCount" resultType="int" parameterType="hashmap">
 		select nvl(count(*), 0) from board
 		<if test="boardid !=null">

@@ -157,54 +157,54 @@ public class DiaryDBBean {
 		return x;
 	}
 	// 각 일기장의 사진 전체 갯수 카운트
-		public int getImgDiaryCountTotal(String diaryid, String email) throws SQLException {
-			int x = 0;
-			String sql = "SELECT nvl(count(filename0),0) + nvl(count(filename1),0) + nvl(count(filename2),0) + nvl(count(filename3),0) + nvl(count(filename4),0) "
-					+ "FROM diary WHERE diaryid = ? and email=?";
-			Connection conn = getConnection();
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			int number = 0;
-			
-			try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, diaryid);
-			pstmt.setString(2, email);
-			
-			rs = pstmt.executeQuery();
-			if (rs.next()) { x = rs.getInt(1); }
-			} catch(Exception e) {
-				e.printStackTrace();
-			} finally {
-				close(conn, rs, pstmt);
-			}
-			
-			return x;
+	public int getImgDiaryCountTotal(String diaryid, String email) throws SQLException {
+		int x = 0;
+		String sql = "SELECT nvl(count(filename0),0) + nvl(count(filename1),0) + nvl(count(filename2),0) + nvl(count(filename3),0) + nvl(count(filename4),0) "
+				+ "FROM diary WHERE diaryid = ? and email=?";
+		Connection conn = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int number = 0;
+		
+		try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, diaryid);
+		pstmt.setString(2, email);
+		
+		rs = pstmt.executeQuery();
+		if (rs.next()) { x = rs.getInt(1); }
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, rs, pstmt);
 		}
+		
+		return x;
+	}
 	// 각 일기장의 사진 페이징 카운트
-		public int getImgDiaryCount(String diaryid, String email) throws SQLException {
-			int x = 0;
-			String sql = "SELECT nvl(count(*),0) FROM diary WHERE diaryid = ? and email=?";
-			Connection conn = getConnection();
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			int number = 0;
-			
-			try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, diaryid);
-			pstmt.setString(2, email);
-			
-			rs = pstmt.executeQuery();
-			if (rs.next()) { x = rs.getInt(1); }
-			} catch(Exception e) {
-				e.printStackTrace();
-			} finally {
-				close(conn, rs, pstmt);
-			}
-			
-			return x;
-		}		
+	public int getImgDiaryCount(String diaryid, String email) throws SQLException {
+		int x = 0;
+		String sql = "SELECT nvl(count(*),0) FROM diary WHERE diaryid = ? and email=?";
+		Connection conn = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int number = 0;
+		
+		try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, diaryid);
+		pstmt.setString(2, email);
+		
+		rs = pstmt.executeQuery();
+		if (rs.next()) { x = rs.getInt(1); }
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, rs, pstmt);
+		}
+		
+		return x;
+	}		
 		
 	
 	// 일기(목록) 가져오기

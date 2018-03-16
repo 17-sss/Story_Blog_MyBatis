@@ -1,4 +1,6 @@
 ﻿StoryController.java
-	* MyBatis 현재 수정 불가..
-	- confirmEmail
+	< MyBatis 현재 수정 불가..>
+	* UserDBMyBatis
 	- loginCheck
+	
+	* DiaryDBMyBatis

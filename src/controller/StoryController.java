@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.db.DiaryDBBean;
+import com.db.DiaryDBMyBatis;
 import com.db.DiaryDataBean;
 import com.db.UserDBBean;
 import com.db.UserDBMyBatis;
@@ -101,7 +102,7 @@ public class StoryController extends Action {
 		return  "/Project/confirmEmail.jsp"; 
 	}
 	
-	// 유저 - 로그인
+	// 유저 - 로그인 <<MyBatis 보류>>
 	public String LoginPro(HttpServletRequest req, HttpServletResponse res)  throws Throwable { 
 		 // 로그인 화면에 입력된 아이디와 비밀번호를 가져온다
 		HttpSession  session = req.getSession();
@@ -111,7 +112,7 @@ public class StoryController extends Action {
         System.out.println("LoginPro=============");
      	
         // DB에서 아이디, 비밀번호 확인
-        UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
+        UserDBBean dbPro = UserDBBean.getInstance();
         int check = dbPro.loginCheck(email, pwd);
         
         UserDataBean user = new UserDataBean();
@@ -177,7 +178,7 @@ public class StoryController extends Action {
 		int count = 0;
 		int number = 0;
 		List diaryList = null;
-		DiaryDBBean dbPro = DiaryDBBean.getInstance();
+		DiaryDBMyBatis dbPro = DiaryDBMyBatis.getInstance();
 		count = dbPro.getDiaryCount(diaryid, (String)session.getAttribute("sessionID"));
 		//게시판에 있는 글 수 count
 		if (count > 0) {
@@ -234,8 +235,8 @@ public class StoryController extends Action {
 		int countT = 0;
 		int number = 0;
 		List diaryList = null;
-		DiaryDBBean dbPro = DiaryDBBean.getInstance();
-		count = dbPro.getImgDiaryCount(diaryid, (String)session.getAttribute("sessionID"));
+		DiaryDBMyBatis dbPro = DiaryDBMyBatis.getInstance();
+		count = dbPro.getDiaryCount(diaryid, (String)session.getAttribute("sessionID"));
 		countT = dbPro.getImgDiaryCountTotal(diaryid, (String)session.getAttribute("sessionID"));
 		//게시판에 있는 글 수 count
 		if (count > 0) {
