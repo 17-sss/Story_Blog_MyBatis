@@ -13,18 +13,12 @@
 	</select>
 	
 	<select id="getUser" parameterType="hashmap" resultType="User">
-		select * from userlist
-		<if test="email !=null">
-			WHERE email = #{email}
-		</if>
-		<if test="email !=null , pwd != null">
-			WHERE email = #{email} and pwd = #{pwd}
-		</if>
+		select * from userlist WHERE email = #{email} and pwd = #{pwd}
 	</select>
 	
-<!-- 	<select id="getUser" parameterType="hashmap" resultType="User">
+	<select id="getUser2" parameterType="hashmap" resultType="User">
 		select * from userlist where email = #{email}
-	</select> -->
+	</select>
 	
 	<update id="updateUser" parameterType="User">
 		update userlist set name=#{name}, pwd=#{pwd}, tel=#{tel}, birth=#{birth}, filename=#{filename} where email=#{email}	

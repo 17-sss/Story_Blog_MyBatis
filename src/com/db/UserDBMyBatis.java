@@ -58,7 +58,7 @@ public class UserDBMyBatis extends MybatisConnector {
 		Map map = new HashMap();
 		map.put("email", email);
 		
-		UserDataBean user = sqlSession.selectOne(namespace+".getUser", map);
+		UserDataBean user = sqlSession.selectOne(namespace+".getUser2", map);
 		
 		sqlSession.commit();
 		sqlSession.close();
