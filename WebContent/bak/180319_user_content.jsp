@@ -7,15 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<title>Story Blog - User</title>
-	<style type="text/css">
-		/* 이미지 반응형으로 처리.. */
-		.autoimg {
-			display: inline-block;
-			width: auto !important;
-			max-width: 100%;
-			height: auto !important;
-		}
-	</style>
 	<script type="text/javascript">
 		function onClick(element) {
 		  document.getElementById("img01").src = element.src;
@@ -84,7 +75,7 @@
 				
 			<div class="w3-third w3-container w3-margin-bottom">
 				<div class="w3-container w3-white w3-padding w3-center">
-					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename0}" alt="${diary.filename0}" class=autoimg onclick="onClick(this)">
+					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename0}" alt="${diary.filename0}" style="width: auto; height:200px;" onclick="onClick(this)">
 					<div class="w3-container w3-white">
 						<p>${diary.cdate}</p>
 					</div>
@@ -97,7 +88,7 @@
 				
 			<div class="w3-third w3-container w3-margin-bottom">
 				<div class="w3-container w3-white w3-padding w3-center">
-					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename1}" alt="${diary.filename1}" class=autoimg onclick="onClick(this)">
+					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename1}" alt="${diary.filename1}" style="width: auto; height:200px;" onclick="onClick(this)">
 					<div class="w3-container w3-white">
 						<p>${diary.cdate}</p>
 					</div>
@@ -110,7 +101,7 @@
 				
 			<div class="w3-third w3-container w3-margin-bottom">
 				<div class="w3-container w3-white w3-padding w3-center">
-					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename2}" alt="${diary.filename2}" class=autoimg onclick="onClick(this)">
+					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename2}" alt="${diary.filename2}" style="width: auto; height:200px;" onclick="onClick(this)">
 					<div class="w3-container w3-white">
 						<p>${diary.cdate}</p>
 					</div>
@@ -123,7 +114,7 @@
 				
 			<div class="w3-third w3-container w3-margin-bottom">
 				<div class="w3-container w3-white w3-padding w3-center">
-					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename3}" alt="${diary.filename3}"  class=autoimg onclick="onClick(this)">
+					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename3}" alt="${diary.filename3}"  style="width: auto; height:200px;" onclick="onClick(this)">
 					<div class="w3-container w3-white">
 						<p>${diary.cdate}</p>
 					</div>
@@ -136,7 +127,7 @@
 				
 			<div class="w3-third w3-container w3-margin-bottom">
 				<div class="w3-container w3-white w3-padding w3-center">
-					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename4}" alt="${diary.filename4}" class=autoimg onclick="onClick(this)">
+					<img src="/Story_Blog_MyBatis/fileSave/${diary.filename4}" alt="${diary.filename4}" style="width: auto; height:200px;" onclick="onClick(this)">
 					<div class="w3-container w3-white">
 						<p>${diary.cdate}</p>
 					</div>

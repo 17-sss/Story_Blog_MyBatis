@@ -7,15 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<title>Story Blog - User</title>
-	<style type="text/css">
-		/* 이미지 반응형으로 처리.. */
-		.autoimg {
-			display: inline-block;
-			width: auto !important;
-			max-width: 100%;
-			height: 240px !important;
-		}
-	</style>
 </head>
 <body>
 <!-- 전체 틀 div ★ -->  
@@ -115,7 +106,7 @@
 			<c:if test="${diary.filename0!=null}">
 				<div class="w3-third w3-container w3-margin-bottom">
 					<div class="w3-container w3-white w3-padding w3-center">
-						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename0}" alt="${diary.filename0}" class=autoimg>
+						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename0}" alt="${diary.filename0}" style="width: auto; height:200px;">
 					</div>
 				</div>		
 			</c:if>
@@ -123,7 +114,7 @@
 			<c:if test="${diary.filename1!=null}">
 				<div class="w3-third w3-container w3-margin-bottom">
 					<div class="w3-container w3-white w3-padding w3-center">
-						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename1}" alt="${diary.filename1}" class=autoimg>
+						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename1}" alt="${diary.filename1}" style="width: auto; height:200px;">
 					</div>
 				</div>		
 			</c:if>
@@ -131,7 +122,7 @@
 			<c:if test="${diary.filename2!=null}">
 				<div class="w3-third w3-container w3-margin-bottom">
 					<div class="w3-container w3-white w3-padding w3-center">
-						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename2}" alt="${diary.filename2}" class=autoimg>
+						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename2}" alt="${diary.filename2}" style="width: auto; height:200px;">
 					</div>
 				</div>		
 			</c:if>
@@ -139,7 +130,7 @@
 			<c:if test="${diary.filename3!=null}">
 				<div class="w3-third w3-container w3-margin-bottom">
 					<div class="w3-container w3-white w3-padding w3-center">
-						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename3}" alt="${diary.filename3}" class=autoimg>
+						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename3}" alt="${diary.filename3}" style="width: auto; height:200px;">
 					</div>
 				</div>		
 			</c:if>
@@ -147,7 +138,7 @@
 			<c:if test="${diary.filename4!=null}">
 				<div class="w3-third w3-container w3-margin-bottom">
 					<div class="w3-container w3-white w3-padding w3-center">
-						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename4}" alt="${diary.filename4}" class=autoimg>
+						<img src="<%=request.getContextPath() %>/fileSave/${diary.filename4}" alt="${diary.filename4}" style="width: auto; height:200px;">
 					</div>
 				</div>		
 			</c:if>

@@ -7,15 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<title>Story Blog - User</title>
-	<style type="text/css">
-		/* 이미지 반응형으로 처리.. */
-		.autoimg {
-			display: inline-block;
-			width: auto !important;
-			max-width: 100%;
-			height: auto !important;
-		}
-	</style>
 </head>
 <body>
 <!-- 전체 틀 div ★ -->  
@@ -26,7 +17,7 @@
 	<!-- <div class="w3-col m8 w3-row" style="margin-left: 22%; margin-top: 5%; margin-bottom: 3%;"> -->
 
 <!-- 메인 margin -->
-<div style="margin-left: 10%; margin-right: 10%; padding-top: 1%; padding-bottom: 1%;" class="w3-container w3-border w3-white w3-card">
+<div style="margin-left: 10%; margin-right: 10%;">
 
 		<!-- 하루의 끝 - form 전송 -->
 		<form action="<%= request.getContextPath() %>/story/user_write" method="post">
@@ -78,8 +69,8 @@
 			<c:if test="${diary.filename0!=null}">
 				
 				<div class="w3-third w3-container w3-margin-bottom">
-					<div class="w3-container w3-padding w3-center w3-light-gray w3-card">
-						<img src="/Story_Blog_MyBatis/fileSave/${diary.filename0}" alt="${diary.filename0}" class=autoimg>
+					<div class="w3-container w3-white w3-padding w3-center">
+						<img src="/Story_Blog_MyBatis/fileSave/${diary.filename0}" alt="${diary.filename0}" style="width: auto; height:200px;">
 						<div class="w3-container w3-white">
 							<p>
 								<a href="<%=request.getContextPath()%>/story/user_content?num=${diary.num}&pageNum=${currentPage}"><b>${diary.subject}</b></a>
@@ -139,10 +130,8 @@
 			<!-- 사진) 이미지 null 출력 (파일 1) -->
 			<c:if test="${diary.filename0==null}">
 				<div class="w3-third w3-container w3-margin-bottom">
-					<div class="w3-container w3-padding w3-center w3-light-gray w3-card">
-				<!-- <div class="w3-third w3-container w3-margin-bottom">
-					<div class="w3-container w3-white w3-padding w3-center"> -->
-						<img src="/Story_Blog_MyBatis/Project/img/no_image.png" alt="${diary.filename0}" class=autoimg>
+					<div class="w3-container w3-white w3-padding w3-center">
+						<img src="/Story_Blog_MyBatis/Project/img/no_image.png" alt="${diary.filename0}" style="width: auto; height:200px;">
 						<div class="w3-container w3-white">
 							<p>
 								<a href="<%=request.getContextPath()%>/story/user_content?num=${diary.num}&pageNum=${currentPage}"><b>${diary.subject}</b></a>
