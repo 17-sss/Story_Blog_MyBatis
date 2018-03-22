@@ -112,7 +112,8 @@ public class StoryController extends Action {
         System.out.println("LoginPro=============");
      	
         // DB에서 아이디, 비밀번호 확인
-        UserDBBean dbPro = UserDBBean.getInstance();
+        UserDBMyBatis dbPro = UserDBMyBatis.getInstance();
+        System.out.println(email +" "+ pwd);
         int check = dbPro.loginCheck(email, pwd);
         
         UserDataBean user = new UserDataBean();
